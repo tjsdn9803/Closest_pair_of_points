@@ -33,8 +33,6 @@ public class closest_pair_of_points {
         double DL = getdistance(getdistance(CPL[0],CPL[1]);
         double DR = getdistance(getdistance(CPR[0],CPR[1]);
 
-        double d = min(DL,DR);
-        
     }
 
 
