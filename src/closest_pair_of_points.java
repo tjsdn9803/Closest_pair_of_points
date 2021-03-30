@@ -33,9 +33,31 @@ public class closest_pair_of_points {
             point a = arr[p];
             point b = arr[q];
             if(q-p==1) return new point[]{a, b};
+            if(q-p==2){
+                point a= arr[p];
+                point b= arr[p+1];
+                point c= arr[p+2];
+                double temp=min(getdistance(a,b), getdistance(a,c), getdistance(b,c));
+                switch (temp){
+                    case getdistance(a,b):
+                        return new point[]{a, b};
+                        break;
+                    case getdistance(a,c):
+                        return new point[]{a, c};
+                        break;
+                    case getdistance(b,c):
+                        return new point[]{b, c};
+                        break;
+
+                }
+
+            }
+
         }
 
+
         int k = (q+p)/2;
+
 
         point[] CPL = ClosestPair(arr,p,k);
         point[] CPR = ClosestPair(arr,k+1,q);
