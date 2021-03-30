@@ -33,9 +33,18 @@ public class closest_pair_of_points {
             point a = arr[p];
             point b = arr[q];
             if(q-p==1) return new point[]{a, b};
+            if(q-p==2){
+                a= arr[p];
+                b= arr[p+1];
+                point c= arr[p+2];
+                double temp=min(getdistance(a,b), getdistance(a,c), getdistance(b,c));
+                if(temp == getdistance(a,b)) return new point[] {a,b};
+                else if(temp == getdistance(a,c)) return new point[] {a,c};
+                else return new point[] {b,c};
+            }
         }
-
         int k = (q+p)/2;
+
 
         point[] CPL = ClosestPair(arr,p,k);
         point[] CPR = ClosestPair(arr,k+1,q);
@@ -59,21 +68,14 @@ public class closest_pair_of_points {
                 double dis = getdistance(middlepoints.get(f),middlepoints.get(t));
                 if(DC > dis){
                     DC = dis;
-//                    g = f+p;
-//                    y = t+p;
                     CPC[0] = middlepoints.get(f);
                     CPC[1] = middlepoints.get(t);
                 }
             }
         }
-        //CPC = new point[]{arr[g], arr[y]};
         if(min(DL,DR,DC)==DL)return CPL;
         else if(min(DL,DR,DC)==DR)return CPR;
         else return CPC;
-//        if(DL<DR)return CPL;
-//        else return CPR;
-
-
     }
 
 
@@ -82,27 +84,26 @@ public class closest_pair_of_points {
 
         Scanner sc = new Scanner(System.in);
         System.out.println("점의 갯수 입력");
-//        int n = sc.nextInt();
-        int n =8;
+        int n = sc.nextInt();
         pointarr = new point[n];
-//        for (int i = 0; i < n; i++) {
-//            System.out.println(i + 1 + "번째 점의 x 입력");
-//            x = sc.nextInt();
-//            System.out.println(i + 1 + "번째 점의 y 입력");
-//            y = sc.nextInt();
-//            point p = new point();
-//            p.setop(x, y);
-//            pointarr[i] = p;
-//        }
-        int xarr [] = {1,4,5 ,6,7,9,11,14};
-        int yarr [] = {1,3,11,2,2,4,4 ,1 };
-        for(int b=0;b<n;b++){
-            x = xarr[b];
-            y = yarr[b];
+        for (int i = 0; i < n; i++) {
+            System.out.println((i + 1) + "번째 점의 x 입력");
+            x = sc.nextInt();
+            System.out.println((i + 1) + "번째 점의 y 입력");
+            y = sc.nextInt();
             point p = new point();
-            p.setop(x,y);
-            pointarr[b] = p;
+            p.setop(x, y);
+            pointarr[i] = p;
         }
+//        int xarr [] = {0,1,4,5 ,6,7,9,11,14};
+//        int yarr [] = {1,1,3,11,2,3,4,4 ,1 };
+//        for(int b=0;b<n;b++){
+//            x = xarr[b];
+//            y = yarr[b];
+//            point p = new point();
+//            p.setop(x,y);
+//            pointarr[b] = p;
+//        }
         for (int j = 0; j < n; j++) {
             x = pointarr[j].x;
             y = pointarr[j].y;
