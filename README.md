@@ -27,7 +27,7 @@ ___
  4. **d를 이용해 분할전 S에 중간 영역(Sc)에 속하는 점들을 찾고, 이 중에서 최근접 점의 쌍을 CPc라 놓는다.**
   
   
-  -*Sl의 최우단점의 x좌표-d 보다 크고 Sr의 최좌단점의 x좌표+d 보다 작은 점을 middlepoints 배열에 저장해 최근접 점의 쌍을 찾는다.*
+  -*Sl의 최우단점의 x좌표-d 보다 크고 Sr의 최좌단점의 x좌표+d 보다 작은 점을 middlepoints 배열에 저장해 y축 오름차순으로 정렬하여 최근접 점(CPc)의 쌍을 찾는다.*
   
   
  5. **CPl CPr CPc 중에서 가장 짧은 거리를 가진 쌍을 해를 리턴한다.**
@@ -36,7 +36,19 @@ ___
  #### coding histories
  -1단계
  
- 
+ '''java
+  public point[] ClosestPair(point arr[],int p,int q){
+        if(q-p<=2){
+            point a = arr[p];
+            point b = arr[q];
+            if(q-p==1) return new point[]{a, b};
+            }
+            int k = (q+p)/2;
+
+
+        point[] CPL = ClosestPair(arr,p,k);
+        point[] CPR = ClosestPair(arr,k+1,q);
+ }
  배열 S를 재귀적으로 분할해 Sl과 Sr로 분할
  
  2개의 점이 남았을때 그대로 리턴
