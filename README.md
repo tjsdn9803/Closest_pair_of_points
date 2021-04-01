@@ -59,8 +59,33 @@ ___
  
  -2단계
  
+ <pre>
+ <code>
+ if(q-p==2){
+                a= arr[p];
+                b= arr[p+1];
+                point c= arr[p+2];
+                double temp=min(getdistance(a,b), getdistance(a,c), getdistance(b,c));
+
+                if(temp == getdistance(a,b)) return new point[] {a,b};
+                else if(temp == getdistance(a,c)) return new point[] {a,c};
+            }
+ </code>
+ </pre>
  
  3개의 점이 남았을때 최근접 점의 쌍을 리턴
+ 
+ <pre>
+ <code>
+ double d = min(DL,DR);
+        middlepoints = new ArrayList<point>();
+ for(int h=0;h<(q-p+1);h++){
+            if(((arr[h+p].x) > (arr[k].x-d)) && ((arr[h+p].x) < (arr[k+1].x+d))){
+                middlepoints.add(arr[h+p]);
+
+            }
+        }
+        CPC = new point[2];
  
  
  Sl과 Sr을 이용해 Sc를 정의하고 배열(middle points)에 저장
@@ -68,13 +93,36 @@ ___
  
  CPl과 CPr를 이용해 d를 구하고 CPc를 구함
  
- 
+ <pre>
+ <code>
+ if(min(DL,DR,DC)==DL)return CPL;
+        else if(min(DL,DR,DC)==DR)return CPR;
+        else return CPC;
+        
+</code>
+</pre>
  closest point를 해로 리턴
  
  
  -3단계
  
- 
+ <pre>
+ <code>
+  Collections.sort(middlepoints);//오름차순정렬
+        for(int g=0;g<middlepoints.size();g++){
+            for(int e=g+1;e<middlepoints.size();e++){
+                if(d > ((middlepoints.get(g).getY())-(middlepoints.get(e).getY()))){//y좌표 차이가 d보다 클때는 계산하지 않음
+
+                    if(DC > getdistance(middlepoints.get(g),middlepoints.get(e))){
+                        DC = getdistance(middlepoints.get(g),middlepoints.get(e));
+                        CPC[0] = middlepoints.get(g);
+                        CPC[1] = middlepoints.get(e);
+                    }
+                }
+            }
+        }
+ </code>
+ </pre>
  배열 middle points를 오름 차순으로 정렬한 뒤 d를 이용해 계산 횟수를 줄임
  
  
