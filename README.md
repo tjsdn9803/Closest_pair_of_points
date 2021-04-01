@@ -112,7 +112,7 @@ ___
   Collections.sort(middlepoints);//오름차순정렬
         for(int g=0;g<middlepoints.size();g++){
             for(int e=g+1;e<middlepoints.size();e++){
-                if(d > ((middlepoints.get(g).getY())-(middlepoints.get(e).getY()))){//y좌표 차이가 d보다 클때는 계산하지 않음
+                if(d > ((middlepoints.get(g).getY())-(middlepoints.get(e).getY()))){
 
                     if(DC > getdistance(middlepoints.get(g),middlepoints.get(e))){
                         DC = getdistance(middlepoints.get(g),middlepoints.get(e));
@@ -122,6 +122,7 @@ ___
                 }
             }
         }
+       
  </code>
  </pre>
  배열 middle points를 오름 차순으로 정렬한 뒤 d를 이용해 계산 횟수를 줄임
