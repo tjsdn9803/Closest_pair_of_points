@@ -86,7 +86,8 @@ ___
             }
         }
         CPC = new point[2];
- 
+ </code>
+ </pre>
  
  Sl과 Sr을 이용해 Sc를 정의하고 배열(middle points)에 저장
  
