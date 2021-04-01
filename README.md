@@ -37,7 +37,8 @@ ___
  -1단계
  
  
- 
+ <pre>
+ <code>
 
    public point[] ClosestPair(point arr[],int p,int q){
          if(q-p<=2){
@@ -49,6 +50,8 @@ ___
          point[] CPL = ClosestPair(arr,p,k);
          point[] CPR = ClosestPair(arr,k+1,q);
   }
+  </code>
+  </pre>
  
  배열 S를 재귀적으로 분할해 Sl과 Sr로 분할
  
